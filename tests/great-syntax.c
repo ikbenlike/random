@@ -1,0 +1,59 @@
+#include \
+<stdio.h>
+
+int
+main
+    (
+        int
+            argc
+                    ,
+        char
+            **argv
+    )
+{
+        if
+            (
+                argc
+                    >
+                1
+            )
+    {
+        printf(
+                "%s\n"
+                        ,
+                argv[
+                    1
+                ]
+              )
+        ;
+    }
+        else
+    {
+        puts(
+                "Please provide enough arguments!"
+            )
+        ;
+    }
+        for
+            (
+                int
+                    i
+                        =
+                    0
+                ;
+                i
+                    <
+                4
+                ;
+                i
+                    ++
+            )
+    {
+        printf(
+                "%d\n"
+                    ,
+                i
+              )
+        ;
+    }
+}

@@ -83,11 +83,11 @@ int while_l(int* a, char* operand, int* b, int (*functionPtr)(int*, int*)){
 int main(void){
     int (*functionPtr)(int*, int*);
     functionPtr = &addInt;
-    char operand[] = "<=";
+    char operand[] = "<";
     int* a = malloc(sizeof(int));
     int* b = malloc(sizeof(int));
     *a = -1;
-    *b = 1;
+    *b = 10;
     printf("%i\n", while_l(a, operand, b, *functionPtr));
     free(a);
     free(b);

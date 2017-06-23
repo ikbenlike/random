@@ -6,20 +6,20 @@
 #include <netinet/in.h>
 #include <string.h>
 
-int doprocessing (int sock) {
+int doprocessing(int sock){
     int n;
     char buffer[256];
     bzero(buffer, 256);
     n = read(sock, buffer, 255);
 
-    if (n < 0) {
+    if(n < 0){
         perror("ERROR reading from socket");
         return 1;
     }
 
     n = write(sock, "I got your message", 18);
 
-    if (n < 0) {
+    if(n < 0){
         perror("ERROR writing to socket");
         return 1;
     }
@@ -39,7 +39,7 @@ int main(void){
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
-    if (sockfd < 0) {
+    if(sockfd < 0){
         perror("ERROR opening socket");
         return 1;
     }
@@ -59,26 +59,26 @@ int main(void){
     listen(sockfd, 5);
     clilen = sizeof(cli_addr);
 
-    while (1) {
+    while(1){
         newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, &clilen);
 
-        if (newsockfd < 0) {
+        if(newsockfd < 0) {
             perror("ERROR on accept");
             return 1;
         }
 
         pid = fork();
-        if (pid < 0) {
+        if(pid < 0) {
             perror("ERROR on fork");
             exit(1);
         }
 
-        if (pid == 0) {
+        if(pid == 0) {
             close(sockfd);
             doprocessing(newsockfd);
             return 0;
         }
-        else {
+        else{
          close(newsockfd);
         }
     }
